@@ -1,0 +1,38 @@
+.btn{
+  background-color: #FFFFFF;
+  border: 1px solid #CCCCCC;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+  border-radius: 4px;
+  color: $main-color;
+  display:inline-block;
+  width:120px;
+  font-size: 14px;
+  text-align:center;
+  height: 30px;
+  line-height: 20px;
+  padding: 4px 6px;
+  vertical-align: middle;
+  text-transform: uppercase;
+  cursor: pointer;
+  &:hover, &:focus{
+    border-color: rgba(82, 168, 236, 0.8);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(82, 168, 236, 0.6);
+    outline: 0 none;
+  }
+}
+.btn-pagination{
+  @extend .btn;
+  margin: 0 .3rem;
+  width: 30px;
+  cursor: default;
+  &:hover, &:focus{
+    border-color: #CCCCCC;
+    box-shadow: none;
+  }
+}
+.btn-pagination-active{
+  @extend .btn-pagination;
+  color: red;
+  border-color: red;
+}

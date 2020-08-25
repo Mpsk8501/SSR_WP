@@ -1,0 +1,29 @@
+.JobOpeningsComponent{
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: auto;
+  margin-top: 2rem;
+  h2{
+    font-size: 2rem;
+    color: #3e3d3d;
+    text-align: center;
+    margin-bottom: 2rem;
+    
+  }
+  .oneJob{
+    margin: 2rem 0;
+    h3{
+      font-size: 1.7rem;
+      color: #808080;
+    }
+    p{
+      font-size: 1.4rem;
+      margin: 1rem 0;
+      word-break: break-all;
+    }
+    .linkBlock{
+      text-align: right;
+    }
+  }
+
+}

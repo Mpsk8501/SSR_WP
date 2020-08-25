@@ -1,0 +1,48 @@
+.footer{
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+ .upFooter{
+   height: 100px;
+   background-color: #DFDFDF;
+   border-bottom: 2px solid #ffffff;
+ }
+  .upFooterWrap{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    .email{
+      color: grey;
+      a{
+        padding-left: 50px;
+      }
+      a:first-of-type{
+        padding-left: 10px;
+      }
+
+    }
+    .phone{
+      text-align: right;
+      h3{
+        color: black;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+      }
+      a{
+        font-size: 1.5rem;
+        color: #808080;
+      }
+    }
+  }
+  .subFooter{
+    height: 50px;
+    background-color: #B3B3B3;
+    a{
+      border-bottom: 2px solid yellow;
+      &:hover{
+        background-color: yellow;
+      }
+    }
+  }
+}

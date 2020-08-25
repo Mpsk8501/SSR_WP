@@ -1,0 +1,53 @@
+.saleComponent{
+  margin-bottom: 2rem;
+  h2{
+    font-size: 2rem;
+    text-align: center;
+    color: #808080;
+  }
+  h4{
+    text-align: center;
+    color: #211b19;
+    font-weight: 600;
+  }
+  .table{
+    margin-top: 4rem;
+    border: 2px solid #747171;
+    background-color: rgba(255, 253, 253, 0.85);
+    box-shadow:  0 5px 20px 2px rgba(34, 60, 80, 0.2);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    ul{
+      display: flex;
+      border-bottom: 1px solid #747171;
+      line-height: 2rem;
+      &:first-of-type{
+        background-color: #747171;
+        color: #FFFFFF;
+        line-height: 3rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+      &:last-of-type{
+        border-bottom: none;
+      }
+      li{
+        width: calc(100%/6);
+        text-align: center;
+        border-right: 1px solid #747171;
+        &:last-of-type{
+          border-right: none;
+        }
+      }
+
+    }
+  }
+  .pagination{
+    display: flex;
+    justify-content: space-between;
+    .paginationWrapper{
+
+    }
+
+  }
+}

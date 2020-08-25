@@ -1,0 +1,16 @@
+.LandingComponent{
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: auto;
+  h2{
+    font-size: 2rem;
+  }
+  h3{
+    font-size: 1.6rem;
+  }
+  p{
+    font-size: 1.4rem;
+    margin: 1rem 0;
+    word-break: break-all;
+  }
+}
