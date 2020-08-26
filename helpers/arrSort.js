@@ -1,52 +1,31 @@
 import delay from './delay'
 
-function compare(field, order) {
-   let len = arguments.length;
-   if(len === 0) {
-      return (a, b) => (a < b && -1) || (a > b && 1) || 0;
-   }
-   if(len === 1) {
-      switch(typeof field) {
-         case 'number':
-            return field < 0 ?
-                ((a, b) => (a < b && 1) || (a > b && -1) || 0) :
-                ((a, b) => (a < b && -1) || (a > b && 1) || 0);
-         case 'string':
-            return (a, b) => (a[field] < b[field] && -1) || (a[field] > b[field] && 1) || 0;
-      }
-   }
-   if(len === 2 && typeof order === 'number') {
-      return order < 0 ?
-          ((a, b) => (a[field] < b[field] && 1) || (a[field] > b[field] && -1) || 0) :
-          ((a, b) => (a[field] < b[field] && -1) || (a[field] > b[field] && 1) || 0);
-   }
-   let fields, orders;
-   if(typeof field === 'object') {
-      fields = Object.getOwnPropertyNames(field);
-      orders = fields.map(key => field[key]);
-      len = fields.length;
-   } else {
-      fields = new Array(len);
-      orders = new Array(len);
-      for(let i = len; i--;) {
-         fields[i] = arguments[i];
-         orders[i] = 1;
-      }
-   }
-   return (a, b) => {
-      for(let i = 0; i < len; i++) {
-         if(a[fields[i]] < b[fields[i]]) return orders[i];
-         if(a[fields[i]] > b[fields[i]]) return -orders[i];
-      }
-      return 0;
-   };
-}
+const re = /[0-9/.]+/
+
+const sortNum = (arr, key) => arr.sort((a,b) =>
+    a[key].match(re) - b[key].match(re)
+)
+
+const sortStr = (arr, key) => arr.sort((a,b) => {
+   let A = a[key]
+   let B = b[key]
+   //return A > B ? 1 : A === B ? 0 : -1
+   return A > B  ? 1 :  -1
+})
 
 
 
-const arrSort = async (arr,key) => {
-   await delay(100)
-   return arr.sort(compare(key))
+
+
+const arrSort = async (arr,key,type) => {
+   //await delay(1000)
+   if(type==='num'){
+      return sortNum(arr,key)
+   }else if (type === 'str') {
+      return sortStr(arr,key)
+   }
+   else return arr
+
 }
 
 export default arrSort
