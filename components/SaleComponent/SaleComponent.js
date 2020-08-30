@@ -170,7 +170,7 @@ const SaleComponent = ({motors}) => {
           <div className={classes.tableHead}>
             <div className={classes.filter}>
               <span>Фильтр по креплению:</span>
-              <select className={classes.selectCss} onChange={filterHandler}  name="filter">
+              <select className={'selectCss'} onChange={filterHandler}  name="filter">
                 <option value="0" >--</option>
                 <option value="1" >Без крепления</option>
                 <option value="2" >Лапы</option>
@@ -180,7 +180,7 @@ const SaleComponent = ({motors}) => {
             </div>
             <div className={classes.filter}>
               <span>Количество на странице</span>
-              <select className={classes.selectCss} onChange={pagNumHandler}  name="pagSelect">
+              <select className={'selectCss'} onChange={pagNumHandler}  name="pagSelect">
                 <option value="15" >15</option>
                 <option value="20" >20</option>
                 <option value="25" >25</option>

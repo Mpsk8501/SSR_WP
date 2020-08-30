@@ -10,10 +10,7 @@ const JobOpenings = ({vacations : serverVacations}) => {
   return (
     <MainLayout title={'Вакансии'}>
       <div className={'flexWrapper'}>
-        {
-          <JobOpeningsComponent
-              vacations={serverVacations}/>
-        }
+        <JobOpeningsComponent vacations={serverVacations}/>
       </div>
     </MainLayout>
 

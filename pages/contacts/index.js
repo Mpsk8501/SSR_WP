@@ -1,13 +1,12 @@
 import { MainLayout } from '../../Layout/MainLayout'
+import Auth from '../../components/authComponent'
 
 
 export default function Contacts() {
   return (
-      <MainLayout>
+      <MainLayout title={'Auth'}>
         <div className={'flexWrapper'}>
-          <div className="container">
-            <h1>Contacts</h1>
-          </div>
+          <Auth/>
         </div>
       </MainLayout>
   )
