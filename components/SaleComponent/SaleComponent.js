@@ -7,11 +7,24 @@ const lapy = '/images/motor/lapy.jpg'
 const flanecLapy = '/images/motor/flancLapy.jpg'
 const flanec = '/images/motor/flanec.jpg'
 
+const icoNoSort = '/images/sortIcon/no_sort.svg'
+const icoUpSort = '/images/sortIcon/sort_up.svg'
+const icoDownSort = '/images/sortIcon/sort_down.svg'
+
+const initialSortState = {
+  0: null,
+  5: null,
+  3: null,
+  4: null,
+  6: null,
+  8: null,
+}
+
 const SaleComponent = ({motors}) => {
   const [table, setTable] = useState(motors)
   const [tableDist] = useState(motors)
   const [sortBlock, setSortBlock] = useState(false)
-  const [sortedElState, setSortedElState] = useState(null)
+  const [sortedElState, setSortedElState] = useState(initialSortState)
 
   const [pagPage, setPagPage]  = useState(1)
   const [pagValue, setPagValue] = useState(15)
@@ -60,20 +73,25 @@ const SaleComponent = ({motors}) => {
     const value = e.target.value
     setSortBlock(true)
 
-    if(sortedElState === value){
+    if(sortedElState[value] !== null){
       setTable([...table].reverse())
+      if(sortedElState[value] === 1){
+        setSortedElState({...initialSortState,[value]:-1})
+      }else {
+        setSortedElState({...initialSortState,[value]:1})
+      }
       setSortBlock(false)
       return
     }
 
     let type = 'num'
-    if(value === 3 || value === 4){
+    if(value === 3|| value === 4){
       type = 'str'
     }
 
     const sortedTable = await arrSort([...table],value, type)
     setTable(sortedTable)
-    setSortedElState(value)
+    setSortedElState({...initialSortState,[value.toString()]:1})
     setSortBlock(false)
   }
 
@@ -86,42 +104,37 @@ const SaleComponent = ({motors}) => {
       const arr = [...tableDist]
       let sortedArr = []
       if(filterType === '4'){
-        console.log(e.target.value)
         sortedArr = arr.filter(item => {
           return item[7].includes('L') && item[7].includes('F')
         })
         setTable(sortedArr)
       }
       if(filterType === '3') {
-        console.log(e.target.value)
         sortedArr = arr.filter(item => {
           return item[7].includes('F') && !item[7].includes('L')
         })
         setTable(sortedArr)
       }
       if(filterType === '2') {
-        console.log(e.target.value)
         sortedArr = arr.filter(item => {
           return item[7].includes('L') && !item[7].includes('F')
         })
         setTable(sortedArr)
       }
       if(filterType === '1') {
-        console.log(e.target.value)
         sortedArr = arr.filter(item => {
           return !item[7].includes('L') && !item[7].includes('F')
         })
         setTable(sortedArr)
       }
       if(filterType === '0') {
-        console.log(e.target.value)
         setTable(tableDist)
         setPagPages(Math.ceil(motors.length/pagValue))
         return
       }
       setPagPage(1)
       setPagPages(Math.ceil(sortedArr.length/pagValue))
-      setSortedElState(null)
+      setSortedElState(initialSortState)
     }
 
   /*End filter*/
@@ -129,7 +142,6 @@ const SaleComponent = ({motors}) => {
   /*PagSelect*/
 
    const pagNumHandler = (e) => {
-     console.log(e.target.value)
      const pagNum = e.target.value
      setPagPage(1)
      setPagPages(Math.ceil(table.length/pagNum))
@@ -137,6 +149,19 @@ const SaleComponent = ({motors}) => {
    }
 
   /*End pagSelect*/
+
+  const returnSortImg = (num) => {
+    if(sortedElState[num] === null){
+      return icoNoSort
+    }
+    if(sortedElState[num] === 1){
+      return icoUpSort
+    }
+    if(sortedElState[num] === -1){
+      return icoDownSort
+    }
+
+  }
   return (
       <div className={classes.saleComponent}>
         <div className="container">
@@ -165,12 +190,19 @@ const SaleComponent = ({motors}) => {
           </div>
           <div className={classes.table}>
             <ul>
-              <li value={0} onClick={sortHandler}>Номер</li>
-              <li value={5} onClick={sortHandler}>кВт</li>
-              <li value={3} onClick={sortHandler}>Комплектность</li>
-              <li value={4} onClick={sortHandler}>Обозначение/Тип</li>
-              <li value={6} onClick={sortHandler}>об/мин</li>
-              <li value={8} onClick={sortHandler}>Цена,Р</li>
+              <li value={0} onClick={sortHandler}>Номер
+                <span><img src={returnSortImg(0)} /></span></li>
+              <li value={5} onClick={sortHandler}>кВт
+                <span><img src={returnSortImg(5)} /></span></li>
+              <li value={3} onClick={sortHandler}>Комплект
+                <span><img src={returnSortImg(3)} /></span>
+              </li>
+              <li value={4} onClick={sortHandler}>Тип
+                <span><img src={returnSortImg(4)} /></span></li>
+              <li value={6} onClick={sortHandler}>об/мин
+                <span><img src={returnSortImg(6)} /></span></li>
+              <li value={8} onClick={sortHandler}>Цена,Р
+                <span><img src={returnSortImg(8)} /></span></li>
             </ul>
             {
               table.map((item, index) =>{

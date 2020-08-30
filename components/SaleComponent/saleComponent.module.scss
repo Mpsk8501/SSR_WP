@@ -26,8 +26,28 @@
         color: #FFFFFF;
         line-height: 3rem;
         font-weight: 600;
+        img{
+          top: 5px;
+          right: 5px;
+          position: absolute;
+          z-index: -10;
+          height: 20px;
+          width: 20px;
+          color: #F2F2F2;
+          filter: invert(1);
+          transition: .4s;
+        }
         li{
+          cursor: pointer;
+          position: relative;
+          z-index: 10;
+          font-size: 1rem;
           border-right: 2px solid #ffffff;
+          &:hover{
+            img{
+              filter: invert(0);
+            }
+          }
         }
       }
       &:last-of-type{
@@ -40,8 +60,8 @@
         background-color: transparent;
         min-height: 70px;
         line-height: 70px;
-        &:first-of-type{
 
+        &:first-of-type{
           background-repeat: no-repeat;
           background-position: left 5px center;
         }
