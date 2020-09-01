@@ -42,18 +42,19 @@ const RegisterForm = () => {
   }
 
   const createCommentHandler = async () => {
-    const siteUrl = 'http://wp-test/wp-json/wp/v2/comments/id&=31'
-    const postData = {
-      content: 'sddwwd'
-    }
-
+    const siteUrl = 'http://wp-test//wp-json/wc/v3/customers'
+    /*const postData = {
+      "title": 'new cart',
+      "excerpt": 'jkgkgkkuuuuuu'
+    }*/
+    console.log(localStorage.getItem('token'))
     const response = await fetch(siteUrl, {
-      method: 'POST',
+      method: 'GET',
       headers: {
-        'Authorization': 'Bearer' +
-            'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC93cC10ZXN0IiwiaWF0IjoxNTk4ODkxODk1LCJuYmYiOjE1OTg4OTE4OTUsImV4cCI6MTU5OTQ5NjY5NSwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMTAifX19.qiaeJqGbV7VKwpWySZFr5iiZOnk4z-iRfw_BkAcDOy4'
-      },
-      body: JSON.stringify(postData)
+        'Content-Type': 'application/json;charset=utf-8',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+
+      }
     })
   }
 
