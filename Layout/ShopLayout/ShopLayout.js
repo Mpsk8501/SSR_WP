@@ -11,7 +11,6 @@ export function ShopLayout({ children, title = null }) {
       <>
         <Head>
           <title>{finalTitle}</title>
-          <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css"/>
           <meta charSet="utf-8"/>
         </Head>
         <div className="wrapper">

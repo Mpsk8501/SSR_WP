@@ -1,5 +1,5 @@
 
-import Shop from './component/shop'
+import Shop from '../../components/wcShopComponent/shop'
 import { ShopLayout } from '../../Layout/ShopLayout/ShopLayout'
 
 
