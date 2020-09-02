@@ -18,6 +18,7 @@ const Header = () => {
             <li><Link activeClassName={classes.active} href = "/sale"><a >В продаже</a></Link></li>
             <li><Link activeClassName={classes.active} href = "/JobOpenings"><a >Вакансии</a></Link></li>
             <li><Link activeClassName={classes.active} href = "/contacts" ><a>Контакты</a></Link></li>
+            <li><Link activeClassName={classes.active} href = "/wcShop" ><a>Shop</a></Link></li>
           </ul>
         </nav>
       </div>
