@@ -1,5 +1,6 @@
-const clientCofig = {
-  siteUrl: 'http://localhost:3000'
+const clientConfig = {
+  siteUrl: 'http://localhost:3000',
+  graphqlUrl: 'http://wp-test/graphql'
 }
 
-export default clientCofig
+export default clientConfig
