@@ -20,7 +20,7 @@ app.prepare()
   .then(()=>{
     const server = express()
 
-    server.get('/wcShop/getProducts',(req, response) => {
+    server.get(`/wcShop/getProducts`,(req, response) => {
       WooCommerce.get('products', (err,data, res) =>{
         response.json(JSON.parse(res))
       })
