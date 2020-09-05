@@ -1,5 +1,4 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -8,17 +7,10 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-const Product = (productData) => {
-  const useStyles = makeStyles({
-    root: {
-      maxWidth: 345,
-    },
-    media: {
-      height: 140,
-    },
-  });
+import classes from './Shop.module.scss'
 
-  const classes = useStyles();
+const Product = (productData) => {
+
   const product = productData.props
 
   return (
@@ -26,7 +18,7 @@ const Product = (productData) => {
         <CardActionArea>
           <CardMedia
               className={classes.media}
-              image={product.images[0].src}
+              image={product.image.sourceUrl}
               title="Product"
           />
           <CardContent>
@@ -35,17 +27,17 @@ const Product = (productData) => {
             </Typography>
             <Typography
                 variant="body2" color="textSecondary" component="div">
-              <div dangerouslySetInnerHTML={{__html:product.short_description}}/>
+              <div dangerouslySetInnerHTML={{__html:product.shortDescription}}/>
             </Typography>
             <Typography gutterBottom variant="h6" component="h4">
-              Обычная цена: {product.regular_price}
+              Обычная цена: {product.regularPrice}
             </Typography>
             <Typography gutterBottom variant="h6" component="h4">
               Цена: {product.price}
             </Typography>
             {
-              product.attributes.length
-                  ? product.attributes.map((item,index)=>{
+              product.localAttributes.nodes
+                  ? product.localAttributes.nodes.map((item,index)=>{
                     return(
                         <Typography key={index} gutterBottom variant="h6" component="h4">
                           {item.name}: {item.options[0]}
