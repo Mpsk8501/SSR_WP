@@ -1,10 +1,8 @@
 import React from 'react'
 import classes from './JobOpeningsComponent.module.scss'
-import { useRouter } from 'next/router'
 import Link from 'next/link'
 
 const JobOpeningsComponent = ({vacations}) => {
-  const router = useRouter()
 
   return (
       <div className={classes.JobOpeningsComponent}>

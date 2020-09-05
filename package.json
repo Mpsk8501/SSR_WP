@@ -2,9 +2,8 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev": "vercel dev",
     "build": "next build",
     "start": "next start"
   },
