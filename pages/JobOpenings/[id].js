@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import { MainLayout } from '../../Layout/MainLayout'
 import classes from './JobOpening.module.scss'
 import parse from 'html-react-parser'
+import clientConfig from '../../ConfigDir/clientConfig'
 
 export default function oneVacation({vacation: serverVacation}) {
   const router = useRouter()
@@ -32,7 +33,7 @@ export default function oneVacation({vacation: serverVacation}) {
 
 export const getServerSideProps = async (ctx) => {
   const id = ctx.query.id
-  const response = await fetch(`http://wp-test/wp-json/custom-routes/v1/newjobfilteredid/${id}`)
+  const response = await fetch(`${clientConfig.siteUrl}/wp-json/custom-routes/v1/newjobfilteredid/${id}`)
   const postData = await response.json()
 
   const vacation = {

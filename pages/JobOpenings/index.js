@@ -2,6 +2,7 @@ import React from 'react'
 
 import { MainLayout } from '../../Layout/MainLayout'
 import JobOpeningsComponent from '../../components/JobOpeningsComponent/JobOpeningsComponent'
+import clientConfig from '../../ConfigDir/clientConfig'
 
 
 const JobOpenings = ({vacations : serverVacations}) => {
@@ -18,7 +19,7 @@ const JobOpenings = ({vacations : serverVacations}) => {
 }
 
 export const getServerSideProps = async () => {
-  const response = await fetch('http://wp-test/wp-json/custom-routes/v1/newjobfiltered')
+  const response = await fetch(`${clientConfig.siteUrl}/wp-json/custom-routes/v1/newjobfiltered`)
   const responseData = await response.json()
   const vacations = []
   responseData.forEach(postData => {
