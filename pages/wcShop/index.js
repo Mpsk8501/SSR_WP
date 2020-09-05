@@ -1,9 +1,48 @@
 import { ShopLayout } from '../../Layout/ShopLayout/ShopLayout'
 import Product from '../../components/wcShopComponent/product'
-import clientConfig from '../../clientConfig'
+import client from '../../ApolloClient'
+import gql from 'graphql-tag'
+
+const PRODUCTS_QUERY =gql`query{
+ products {
+    nodes {
+      ... on SimpleProduct {
+        id
+        name
+        description
+        galleryImages {
+          nodes {
+            srcSet
+            title
+            uri
+            sourceUrl
+          }
+        }
+        image {
+          sizes
+          srcSet
+          sourceUrl
+          title
+          uri
+        }
+        price
+        regularPrice
+        shortDescription
+        slug
+        localAttributes {
+          nodes {
+            name
+            options
+          }
+        }
+      }
+    }
+  }
+}`
+
+
 
 const WcShop = ({products: serverSideProducts}) => {
-  console.log(serverSideProducts)
   return (
       <ShopLayout title={'Main'}>
         <div className={'flexWrapper'}>
@@ -17,17 +56,19 @@ const WcShop = ({products: serverSideProducts}) => {
               }
             </div>
           </div>
-
         </div>
       </ShopLayout>
   )
 }
 
 WcShop.getInitialProps = async () =>{
-  const res = await fetch(`${clientConfig.siteUrl}/wcShop/getProducts`)
-  const productData = await res.json()
+
+  const result = await client.query({
+    query: PRODUCTS_QUERY
+  })
+
   return {
-    products: productData
+    products: result.data.products.nodes
   }
 
 }

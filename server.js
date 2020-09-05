@@ -1,6 +1,6 @@
 const next = require('next')
 const express = require( 'express' )
-const wooConfig = require( './wooConfig')
+const wooConfig = require( './ConfigDir/wooConfig')
 
 const port = 3000
 const dev = process.env.NODE_ENV !=='production'
@@ -35,8 +35,8 @@ app.prepare()
         throw err
       }
       console.log(`ready on ${port}`)
-    }).catch(ex=> {
-      console.error(ex.stack)
-      process.exit(1)
     })
-  })
+  }).catch(ex=> {
+  console.error(ex.stack)
+  process.exit(1)
+})
