@@ -33,9 +33,14 @@ export default function oneVacation({vacation: serverVacation}) {
 
 export const getServerSideProps = async (ctx) => {
   const id = ctx.query.id
-  const response = await fetch(`${clientConfig.siteUrl}/wp-json/custom-routes/v1/newjobfilteredid/${id}`)
+  const response = await fetch(`${clientConfig.siteUrl}/wp-json/custom-routes/v1/newjobfilteredid/${id}`,{
+    headers:{
+      "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)" +
+          " Chrome/85.0.4183.83 Safari/537.36",
+      "cookie":"beget=begetok"
+    }
+  })
   const postData = await response.json()
-
   const vacation = {
     id: postData[0].id,
     title: postData[0].title,
