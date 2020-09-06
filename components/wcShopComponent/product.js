@@ -8,19 +8,24 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 import classes from './Shop.module.scss'
+import Link from 'next/link'
 
 const Product = (productData) => {
 
   const product = productData.props
 
   return (
-      <Card key={product.id} className={classes.root}>
+      <Card key={product.productId} className={classes.root}>
         <CardActionArea>
+          <Link  href={`/wcShop/product?id=${product.productId}`}>
+            <a>
           <CardMedia
               className={classes.media}
               image={product.image.sourceUrl}
               title="Product"
           />
+            </a>
+          </Link>
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
               {product.name}
@@ -50,7 +55,7 @@ const Product = (productData) => {
         </CardActionArea>
         <CardActions>
           <Button size="small" color="primary">
-            Посмотреть
+            В корзину
           </Button>
         </CardActions>
       </Card>

@@ -7,23 +7,10 @@ const PRODUCTS_QUERY =gql`query{
  products {
     nodes {
       ... on SimpleProduct {
-        id
+        productId
         name
-        description
-        galleryImages {
-          nodes {
-            srcSet
-            title
-            uri
-            sourceUrl
-          }
-        }
         image {
-          sizes
-          srcSet
           sourceUrl
-          title
-          uri
         }
         price
         regularPrice
