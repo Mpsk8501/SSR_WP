@@ -3,8 +3,8 @@ import '../index.scss'
 // import { appWithRedux } from 'next-redux'
 // import rootReducer from '../Store/rootReducer'
 // import thunk from 'redux-thunk'
+import '@brainhubeu/react-carousel/lib/style.css';
 import NextNprogress from 'nextjs-progressbar'
-
 const MyApp = function({ Component, pageProps }) {
   return (
     <>

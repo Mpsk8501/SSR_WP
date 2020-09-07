@@ -1,0 +1,25 @@
+.Calculator{
+  .sliderWrapper{
+    height: 400px;
+    width: 700px;
+  }
+  .sliderHeader{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .sliderBlock{
+    display: flex;
+    justify-content: space-between;
+    img{
+      height: 100%;
+    }
+  }
+  .switcherBlock{
+    display: flex;
+    flex-direction: column;
+  }
+  .caruselCont{
+
+  }
+}

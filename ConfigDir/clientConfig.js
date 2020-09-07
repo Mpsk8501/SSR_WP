@@ -1,6 +1,6 @@
 const clientConfig = {
-  siteUrl: 'http://c90824ui.beget.tech',
-  graphqlUrl: 'http://c90824ui.beget.tech/graphql'
+  siteUrl: 'http://wp-test',
+  graphqlUrl: 'http://wp-test/graphql'
 }
 
 export default clientConfig

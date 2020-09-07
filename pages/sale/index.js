@@ -17,9 +17,8 @@ const Sale = ({motors: serverMotors}) => {
 }
 
 export const getServerSideProps = async () => {
-  const response = await fetch("http://c90824ui.beget.tech/wp-json/tablepress/api/v1/table/1")
+  const response = await fetch(`${clientConfig.siteUrl}/wp-json/tablepress/api/v1/table/1`)
   const responseData = await response.json()
-  console.log(responseData)
   responseData.data.forEach(item => {
     item[8] = item[8].split(',',2).join('')
   })
