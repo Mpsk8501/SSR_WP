@@ -1,37 +1,15 @@
 import classes from './Calculator.module.scss'
-import FormGroup from '@material-ui/core/FormGroup';
+
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import Slider from '@material-ui/core/Slider'
 
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+
 import {useState} from 'react'
-
-
-
-const marks = [
-  {
-    value: 0,
-    label: '0°C',
-  },
-  {
-    value: 20,
-    label: '20°C',
-  },
-  {
-    value: 37,
-    label: '37°C',
-  },
-  {
-    value: 100,
-    label: '100°C',
-  },
-];
-
-const settings =  {
-  arrows: false,
-  arrowsBlock: false,
-  slidesPerRow: 5
-};
 
 
 const Calculator = () => {
@@ -42,8 +20,11 @@ const Calculator = () => {
 
   const [sliderValue, setSliderValue] =useState({
     sliderA: 0,
-    sliderB: 0
+    sliderB: 3
   })
+
+
+  const [inputValue, setInputValue] = useState(10)
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
@@ -54,49 +35,89 @@ const Calculator = () => {
   const handleSliderAChange = (event,newValue) => {
     setSliderValue({ ...sliderValue, sliderA: newValue })
   };
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value)
+  }
 
   return (
     <div className={classes.Calculator}>
-      <div className="container">
-        <h2>Частота:{sliderValue.sliderB}</h2>
-        <div className={classes.sliderWrapper}>
-          <div className={classes.sliderHeader}>
-            <h4>
-              <span>WATT</span><br/>
-              мощность, <br/>
-              квТ/ч
-            </h4>
-            <h4>
-              <span>SPEED</span><br/>
-              частота вращения, <br/>
-              об/мин
-            </h4>
+      <div className={classes.calculatorHeader}>
+        <img src="/images/calculator/logo.PNG"alt=""/>
+        <h2>
+          УралЭлектроРемонт
+        </h2>
+        <button>
+          <img src="/images/calculator/btn.PNG" alt=""/>
+        </button>
+      </div>
+      <div className={classes.main}>
+        <div className={classes.title}>
+          <h2>
+            Расчитать стоимость <br/> ремонта электродвигателя онлайн
+          </h2>
+        </div>
+        <div className={classes.input}>
+          <h2>
+            Замена <br/>
+            обмотки:
+          </h2>
+          <FormControl style={{"minWidth": "480px",}} variant="outlined">
+            <InputLabel id="demo-simple-select-outlined-label">Тип ЭД</InputLabel>
+            <Select
+                labelId="demo-simple-select-outlined-label"
+                id="demo-simple-select-outlined"
+                value={inputValue}
+                onChange={handleInputChange}
+                label="Тип ЭД"
+            >
+              <MenuItem value={10}>электродвигателя
+                без ротора</MenuItem>
+              <MenuItem value={20}>фазного ротора</MenuItem>
+              <MenuItem value={30}>импортного электродвигателя</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
+
+        <div className={classes.sliderHeader}>
+          <h4>
+            <span>WATT</span><br/>
+            мощность, <br/>
+            квТ/ч
+          </h4>
+          <h4>
+            <span>SPEED</span><br/>
+            частота вращения, <br/>
+            об/мин
+          </h4>
+        </div>
+        <div className={classes.sliderBlock}>
+          <div className={classes.slider}>
+
+            <Slider
+                orientation="vertical"
+                defaultValue={30}
+                aria-labelledby="vertical-slider"
+            />
           </div>
-          <div className={classes.sliderBlock}>
-            <div className={classes.slider}>
-
-              <Slider
-                  orientation="vertical"
-                  defaultValue={30}
-                  aria-labelledby="vertical-slider"
-                  marks={marks}
-              />
+          <img src="/images/calculator/motor.png" alt=""/>
+          <div className={classes.slider}>
+            <div className={classes.valuesBlock}>
+              <span className={sliderValue.sliderB===3?classes.spanActive:null}>750</span>
+              <span className={sliderValue.sliderB===2?classes.spanActive:null}>1000</span>
+              <span className={sliderValue.sliderB===1?classes.spanActive:null}>1500</span>
+              <span className={sliderValue.sliderB===0?classes.spanActive:null}>3000</span>
             </div>
-            <img src="/images/двиг.png" alt=""/>
-            <div className={classes.slider}>
-
-              <Slider
-                  orientation="vertical"
-                  defaultValue={0}
-                  aria-labelledby="vertical-slider"
-                  step={750}
-                  min={0}
-                  max={3000}
-                  name={'sliderB'}
-                  value={sliderValue.sliderB}
-                  onChange={handleSliderBChange}
-              />
-            </div>
+            <Slider
+                orientation="vertical"
+                defaultValue={3}
+                aria-labelledby="vertical-slider"
+                step={1}
+                min={0}
+                max={3}
+                name={'sliderB'}
+                value={sliderValue.sliderB}
+                onChange={handleSliderBChange}
+            />
           </div>
         </div>
         <div className={classes.switcherBlock}>
@@ -122,9 +143,7 @@ const Calculator = () => {
               label="Двигатели разработаные до 1972 года"
           />
         </div>
-
       </div>
-
     </div>
   )
 }

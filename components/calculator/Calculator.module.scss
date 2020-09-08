@@ -1,12 +1,91 @@
 .Calculator{
-  .sliderWrapper{
-    height: 400px;
-    width: 700px;
+  height: 1280px;
+  width: 720px;
+  background-color: #fff;
+  .calculatorHeader{
+    background-color: #00D1FF;
+    height: 70px;
+    h2{
+      flex-grow: 1;
+      font-size: 28px;
+      line-height: 70px;
+      padding-left: 30px;
+      font-weight: 600;
+      text-transform: uppercase;
+
+    }
+    button{
+      background-color: #00D1FF;
+      cursor: pointer;
+      img{
+        margin: 0;
+      }
+    }
+    img{
+      margin-left: 10px;
+      margin-top: 15px;
+      height: 40px;
+      width: 40px;
+    }
+
+    display: flex;
+    justify-content: space-between;
+  }
+  .main{
+    padding: 50px 20px 40px;
+    .title{
+      h2{
+        font-size: 40px;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+      margin-bottom: 40px;
+    }
+    .input{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+      h2{
+        font-size: 24px;
+        font-weight: 600;
+      }
+    }
+    .slider{
+      position: relative;
+      .valuesBlock{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 120%;
+        top: -10%;
+        right: 50px;
+        text-align: right;
+        span{
+          font-size: 32px;
+          color: #808080;
+        }
+        .spanActive{
+          color: #009ED0;
+          font-weight: 600;
+        }
+      }
+    }
   }
   .sliderHeader{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 60px;
+    h4{
+      font-size: 26px;
+      span{
+        font-weight: 600;
+      }
+      &:last-of-type{
+        text-align: right;
+      }
+    }
   }
   .sliderBlock{
     display: flex;
