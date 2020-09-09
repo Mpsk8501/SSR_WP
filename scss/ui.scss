@@ -93,3 +93,15 @@
   }
 
 }
+
+.MuiSwitch-thumb{
+ color:  #009ED0;
+
+}
+
+.MuiSwitch-colorPrimary.Mui-checked + .MuiSwitch-track{
+  background-color: #1a73a8!important;
+}
+.MuiTypography-body1{
+  font-size: 28px!important;
+}
